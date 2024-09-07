@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
+</head>
+<body>
+    <div class="auth">
+        <div class="card">
+            <div class="auth__header text-center">
+                <a href="/">
+                    <img src="{% static 'images/logo.svg' %}" alt="icon"/>
+                </a>
+                <h3>Вход в аккаунт</h3>
+                <p>Добро пожаловать обратно!</p>
+            </div>
+
+            <form action="{% url 'login' %}" method="post" class="form auth__form">
+                {% csrf_token %}
+
+                <div class="form__field">
+                    <label for="formInput#text">Имя пользователя: </label>
+                    <input
+                        class="input input--text"
+                        id="formInput#text"
+                        type="text"
+                        name="username"
+                        placeholder="Введите ваше имя пользователя..."
+                    />
+                </div>
+
+                <div class="form__field">
+                    <label for="formInput#password">Пароль: </label>
+                    <input
+                        class="input input--password"
+                        id="formInput#password"
+                        type="password"
+                        name="password"
+                        placeholder="••••••••"
+                    />
+                </div>
+
+                <div class="auth__actions">
+                    <input class="btn btn--sub btn--lg" type="submit" value="Войти"/>
+                    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+                </div>
+            </form>
+            <div class="auth__alternative">
+                <p>Нет аккаунта?</p>
+                <a href="{% url 'register' %}">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
