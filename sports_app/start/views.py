@@ -46,4 +46,4 @@ def choose_role(request):
         role = request.POST.get('role')
         request.session['role'] = role
         return redirect('register') # account
-    return render(request, 'account/choose_role.html')
+    return render(request, 'account/choose_role.html') # ???
