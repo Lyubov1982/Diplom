@@ -1,27 +1,38 @@
 {% load static %}
-<!-- Header Section -->
+
 <header class="header">
+    <div class="header__background">
+        <img src="{% static 'images/orig.jpeg' %}" alt="Background Image" class="header__background-image">
+    </div>
     <div class="container container--narrow">
         <a href="/" class="header__logo">
-            <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo"/>
+            <img src="{% static 'images/running.png' %}" alt="DevSearch Logo"/>
         </a>
         <nav class="header__nav">
             <input type="checkbox" id="responsive-menu"/>
             <label for="responsive-menu" class="toggle-menu">
-                <span>Menu</span>
+                <span>Меню</span>
                 <div class="toggle-menu__lines"></div>
             </label>
-            <ul class="header__menu">
-                <li class="header__menuItem"><a href="index.html">Developers</a></li>
-                <li class="header__menuItem"><a href="{% url 'sport' %}"> SPORT</a></li>
-                <li class="header__menuItem"><a href="{% url 'healthy' %}">Нутрициология</a></li>
-                <li class="header__menuItem"><a href="inbox.html">Inbox</a></li>
-                <li class="header__menuItem"><a href="account.html">My Account</a></li>
-                <li class="header__menuItem"><a href="login.html" class="btn btn--sub">Login/Sign Up</a></li>
+            <ul class="header__menu" style="font-weight: bold;">
+                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'projects' %}"> Главная</a></li>
+                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'sport' %}"> SPORT</a></li>
+                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'healthy' %}">Здоровье</a></li>
+                <li class="header__menuItem" style="font-size: 20px;"><a href="index.html">ПРОФИ</a></li>
+<!--                <li class="header__menuItem" style="font-size: 20px;"><a href="inbox.html">Inbox</a></li>-->
+                <li class="header__menuItem" style="font-size: 18px;"><a href="account.html">My Account</a></li>
+                <li class="header__menuItem" style="font-size: 20px;"><a href="login.html" class="btn btn--sub">Login/Sign Up</a></li>
             </ul>
-            <div class="header__search">
-                <input type="text" placeholder="Search by Project Title"/>
-                <button type="submit">Search</button>
+            <div class="hero-section__search">
+                <form class="form" action="#" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Поиск</label>
+                        <input class="input input--text" id="formInput#search" type="text" name="text"
+                               placeholder="Введите текст для поиска"/>
+                    </div>
+
+                    <input class="btn btn--sub btn--lg" type="submit" value="Поиск"/>
+                </form>
             </div>
         </nav>
     </div>

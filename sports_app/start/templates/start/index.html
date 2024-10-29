@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница</title>
-    {% load static %}
+    <title>Sport & healthy lifestyle</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <style>
         body {
@@ -17,6 +17,14 @@
 </head>
 <body>
 
+<header class="header">
+    <div class="container container--narrow">
+            <ul class="header__menu">
+                <li class="header__menuItem"><a href="{% url 'projects' %}">Главная</a></li>
+            </ul>
+    </div>
+</header>
+
 <!--    <div class="role-container">-->
 <div class="site-info">
     <h1>Sport & healthy lifestyle</h1>
@@ -24,7 +32,6 @@
     <p>ЗОЖ это любовь к правильному и чёткому распорядку дня, сбалансированному питанию, спорту и медитации, бережному отношению к себе и окружающему пространству.</p>
 </div>
 <div class="role-container">
-    <h2>Добро пожаловать!</h2>
     <div class="auth__actions1">
         <a href="{% url 'registration' %}" class="btn btn--sub1 btn--lg">Регистрация</a>
     </div>

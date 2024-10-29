@@ -31,6 +31,8 @@
 
 .btn:hover {
   opacity: 0.85;
+  background-color: var(--color-white);
+  color: var(--color-main);
 }
 
 .btn i {
@@ -38,7 +40,7 @@
 }
 
 .btn--main {
-  background-color: var(--color-main);
+  background-color: var(--color-sub-light);
   color: var(--color-white);
 }
 

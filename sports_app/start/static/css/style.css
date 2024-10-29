@@ -59,6 +59,50 @@ body {
     color: var(--color-light);
 }
 
+/* Стили для шапки */
+
+.header {
+    width: 100%;
+    background-color: var(--color-header-bg); /* Цвет фона шапки */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для шапки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container--narrow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+.header__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.header__menuItem {
+    margin: 0;
+}
+
+.header__menuItem a {
+    text-decoration: none;
+    color: white; /* Белый цвет текста */
+    font-weight: bold;
+    font-size: 20px; /* Размер шрифта */
+    transition: color 0.3s ease;
+}
+
+.header__menuItem a:hover {
+    color: var(--color-accent); /* Цвет текста при наведении */
+}
+/*=======================*/
 .auth {
     width: 100%;
     max-width: 400px;

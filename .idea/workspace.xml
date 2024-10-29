@@ -5,59 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb1af38-d995-4507-9fe3-53862248f331" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/pattern.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/project-a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/project-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/project-c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/styles/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_alert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_animation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_author-box.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_avatar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_layout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_loading.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_tag-input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_tag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_typography.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_utilities.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_variables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/uikit.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/healthy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/navbar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/projects.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/projects1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/sport.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/projects/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/start/static/images/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/start/static/images/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sports_app/start/static/images/pattern.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/migrations/0002_usefullink_alter_project_options_alter_tag_options_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/dumbbel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/favicon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/orig.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/static/images/running.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/add_useful_link.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/static/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/static/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_button.css" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_typography.css" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/static/uikit/styles/modules/_typography.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/templates/projects/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/templates/projects/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/templates/projects/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/templates/projects/projects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/templates/projects/projects1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_app/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/projects/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sports_app/sports_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/sports_app/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sports_app/sports_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/sports_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sports_app/start/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/start/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sports_app/start/templates/start/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/start/templates/start/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_app/start/templates/start/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/start/templates/start/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_app/start/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/start/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_app/start/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_app/start/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +76,7 @@
       <recent name="C:\Users\karip\OneDrive\Рабочий стол\Diplom\sports_app\start\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\karip\OneDrive\Рабочий стол\Diplom\sports_app\projects\static\images" />
       <recent name="C:\Users\karip\OneDrive\Рабочий стол\Diplom\sports_app\start\static\images" />
       <recent name="C:\Users\karip\OneDrive\Рабочий стол\Diplom\sports_app\start\templates\start" />
     </key>

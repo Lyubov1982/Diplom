@@ -1,0 +1,12 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+<h1>Add Useful Link</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+    <label for="url">URL:</label>
+    <input type="url" id="url" name="url" required>
+    <button type="submit">Add Link</button>
+</form>
+{% endblock %}

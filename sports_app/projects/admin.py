@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Project, Tag, UsefulLink
 
-# Register your models here.
+admin.site.register(Project)
+admin.site.register(Tag)
+admin.site.register(UsefulLink)
+
+
+

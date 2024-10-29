@@ -1,9 +1,32 @@
 :root {
-  --color-sub: #2d2d39;
+    --color-sub: #2d2d39;
+    --color-main: #5aa5b9;
+    --color-main-light: #e6faff;
+    --color-sub-light: #51546e;
+    --color-sub-lighter: #ededfd;
+    --color-text: #737373;
+    --color-gray: #8b8b8b;
+    --color-light: #e5e7eb;
+    --color-light-gray: #767676;
+    --color-bg: #f8fafd;
+    --color-white: #fffefd;
+    --color-white-light: #f3f3f3;
+    --color-black: #000000;
+    --color-success: #359e64;
+    --color-success-bg: #def8e8;
+    --color-error: #fc4b0b;
+    --color-error-bg: #fff2ee;
+    --font-base: 'Poppins', arial, helvetica, 'Segoe UI', roboto, ubuntu, sans-serif;
+    --font-monospace: 'Fira Code', 'Courier New', courier, monospace;
+    --font-regular: 300;
+    --font-medium: 500;
+    --font-bold: 700;
+    --generic-shadow: 1px 1px 5px #00000010;
+    --generic-transition: all 0.3s ease-in-out;
 }
 
 .btn--sub {
-  background-color: var(--color-sub-light);
+  background-color: var(--color-main);
 }
 
 .card {
@@ -25,6 +48,44 @@ img {
   margin: 0 auto;
 }
 
+/*Navbar*/
+.header {
+    position: relative;
+    overflow: hidden;
+    /*height: 300px; Устанавливаем высоту шапки */
+}
+
+.header__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.header__background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный слой */
+    z-index: 1;
+}
+
+.header__background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
 /*=======================
   Developer
 ========================*/
@@ -32,7 +93,7 @@ img {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 10px 0;
+  padding: 10px 10px;
   margin-bottom: 20px;
 }
 
@@ -112,17 +173,17 @@ img {
   position: sticky;
   z-index: 111;
   background-color: var(--color-sub);
-  padding: 1.5rem 0;
+  padding: 3.5rem 0;
 }
 
 .header > .container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 }
 
 .header__logo > img {
-  height: 3.8rem;
+  height: 4.5rem;
 }
 
 .header__nav > ul {
@@ -225,13 +286,15 @@ img {
     flex-direction: column;
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 5rem;
     left: 0;
     bottom: 0;
     right: 0;
     background: var(--color-sub);
     transition: all 0.5s ease-in-out;
+
   }
+
 
   .header__menuItem a {
     transition: all 0.5s ease-in-out;
@@ -565,6 +628,7 @@ img {
 /*=======================
   Projects Page
 ========================*/
+
 .projects > .hero-section {
   background: var(--color-sub-lighter);
   height: 30vh;
@@ -582,11 +646,28 @@ img {
   font-weight: 700;
   color: var(--color-sub);
 }
-
+/* основные статьи */
 .projectsList {
   margin-top: 8rem;
+  flex: 2;
+  margin-right: 20px;
+}
+/* блок ссылок */
+.links-section {
+    flex: 1;
+    background-color: var(--color-sub)
+    padding: 10px;
+    border-radius: 5px;
 }
 
+.links-section h2 {
+    margin-bottom: 12px;
+    color: var(--color-gray)
+}
+
+.links-section .link {
+    margin: 10px;
+}
 /*========== Projects ==========*/
 
 .project__thumbnail {
