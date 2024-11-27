@@ -58,6 +58,6 @@ a {
   padding-bottom: 2px;
   text-decoration: none;
   display: inline-block;
-  color: var(--color-main);
+  color: var(--color-sub);
   font-weight: var(--font-medium);
 }

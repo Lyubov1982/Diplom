@@ -1,0 +1,21 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'account' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+            <br>
+
+            <h3> Удаление контента </h3>
+            <p>Вы уверены, что хотите удалить <b>"{{object}}"?</b></p>
+            <form class="form" method="post">
+                {% csrf_token %}
+                <button class="btn btn--sub btn--lg  my-md" type="submit">Да, удалить</button>
+                <a class="btn btn--sub btn--lg  my-md" href="{% url 'account' %}">Отменить</a>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

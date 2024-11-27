@@ -1,213 +1,212 @@
 {% extends 'projects/base.html' %}
 {% block content %}
-<!-- Main Section -->
+
+<!-- <style>
+    .project {
+        border-radius: 5px;
+        display: block;
+        position: relative;
+        width: 100%; /* Ширина контейнера */
+        padding-top: 56.25%; /* Соотношение сторон 16:9 (9 / 16 * 100%) */
+        overflow: hidden; /* Скрываем элементы, выходящие за пределы контейнера */
+    }
+    .project__thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Масштабируем изображение, чтобы заполнить контейнер */
+    }
+    .card__body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+        color: white;
+        padding: 10px;
+        /*height: 300px;*/
+    }
+</style> -->
+
+<!--<main class="projects">-->
+<!--    <section class="projectsList">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                &lt;!&ndash; Left Column (Sections and Tags) &ndash;&gt;-->
+<!--                <div class="column column&#45;&#45;1of5">-->
+<!--                    <h3 class="singleProject__subtitle">Категория</h3>-->
+<!--                    <div class="singleProject__toolStack">-->
+<!--                        {% for section in sections %}-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;sub tag&#45;&#45;lg">-->
+<!--                            <small>{{ section.name }}</small>-->
+<!--                        </span>-->
+<!--                        {% endfor %}-->
+<!--                    </div>-->
+
+<!--                    <h3 class="singleProject__subtitle">Tag</h3>-->
+<!--                    <div class="singleProject__toolStack">-->
+<!--                        {% for tag in unique_tags %}-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;sub tag&#45;&#45;lg">-->
+<!--                            <small>{{ tag }}</small>-->
+<!--                        </span>-->
+<!--                        {% endfor %}-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="column column&#45;&#45;3of5">-->
+<!--                    <div class="grid grid&#45;&#45;three">-->
+<!--                        {% for project in projects %}-->
+<!--                        <div class="column">-->
+<!--                            <div class="card project">-->
+<!--                                <a href="{% url 'project' project.id %}" class="project">-->
+<!--                                    <img class="project__thumbnail" src="{{ project.featured_image.url }}"-->
+<!--                                         alt="project thumbnail"/>-->
+<!--                                    <div class="card__body">-->
+<!--                                        <h3 class="project__title">{{ project.title }}</h3>-->
+<!--                                        <p><a class="project__author" href="{% url 'user_profile' project.owner.id %}">{{project.owner.name}}</a></p>-->
+<!--                                        <div class="project__tags">-->
+<!--                                            {% for tag in project.tags.all %}-->
+<!--                                            <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                                                <small>{{ tag }}</small>-->
+<!--                                            </span>-->
+<!--                                            {% endfor %}-->
+<!--                                        </div>-->
+<!--                                        <div class="like-section">-->
+<!--                                            <button class="like-button" data-project-id="{{ project.id }}">-->
+<!--                                                <span class="like-icon">&#9829;</span>-->
+<!--                                                <span class="like-count">{{ project.likes.count }}</span>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        {% endfor %}-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Right Column (Useful Links) &ndash;&gt;-->
+<!--                <div class="column column&#45;&#45;1of5">-->
+<!--                    <section class="links-section">-->
+<!--                        <h2 style="font-size: 2.6rem; color: var(&#45;&#45;color-sub); ">Полезные ссылки</h2>-->
+<!--                        <div class="grid grid&#45;&#45;two">-->
+<!--                            {% for link in useful_links %}-->
+<!--                            <div class="column">-->
+<!--                                <div class="card link" style="width: auto; height: auto;">-->
+<!--                                    <a href="{{ link.url }}" class="link" target="_blank">-->
+<!--                                        <img src="{{ link.icon_url.url }}" alt="Site Icon" class="link__icon">-->
+<!--                                        <h3 class="link__title" style="font-size: 1.8rem; color: var(&#45;&#45;color-main); ">{{ link.title }}</h3>-->
+<!--                                        <p style="font-size: 1.1rem;">Переход на сторонний сайт</p>-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            {% endfor %}-->
+<!--                        </div>-->
+<!--                    </section>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    {% include 'projects/pagination.html' with queryset=projects %}-->
+<!--</main>-->
+
+
 <main class="projects">
     <section class="projectsList">
         <div class="container">
-            <div class="grid grid--three">
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-a.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">Yoga Studio Landing Page Website and Design</h3>
-                                <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">98%</span> Postitive
-                                    Feedback (72 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
-                                </div>
-                            </div>
-                        </a>
+            <div class="row">
+                <!-- Left Column (Sections and Tags) -->
+                <div class="column column--1of5">
+                    <h3 class="singleProject__subtitle">
+                        <a href="{% url 'projects' %}">Категория</a>
+                    </h3>
+                    <div class="singleProject__toolStack">
+                        {% for section in sections %}
+                        <span class="tag tag--pill tag--sub tag--lg">
+                            <a href="?section={{ section.name }}{% if selected_section %}&section={{ selected_section }}{% endif %}">
+                                <small>{{ section.name }}</small>
+                            </a>
+                        </span>
+                        {% endfor %}
+                    </div>
+
+                    <h3 class="singleProject__subtitle">
+                        <a href="{% url 'projects' %}">Tag</a>
+                    </h3>
+                    <div class="singleProject__toolStack">
+                        {% for tag in unique_tags %}
+                        <span class="tag tag--pill tag--sub tag--lg">
+                            <a href="?tag={{ tag.name }}{% if selected_tag %}&tag={{ selected_tag }}{% endif %}">
+                                <small>{{ tag.name }}</small>
+                            </a>
+                        </span>
+                        {% endfor %}
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-b.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">DevSearch UI Design</h3>
-                                <p><a class="project__author" href="profile.html">By Shahriar P. Shuvo</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">92%</span> Postitive
-                                    Feedback (62 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
-                                </div>
+                <div class="column column--3of5">
+                    <div class="grid grid--three">
+                        {% for project in projects %}
+                        <div class="column">
+                            <div class="card project">
+                                <a href="{% url 'project' project.id %}">
+                                    <img class="project__thumbnail" src="{{ project.featured_image.url }}"
+                                         alt="project thumbnail"/>
+                                    <div class="card__body">
+                                        <h3 class="project__title" style="font-size: 1.8rem; margin-bottom: 8px;">{{ project.title }}</h3>
+                                        
+                                        <p style="margin-bottom: 8px;"><a class="project__author" href="{% url 'user_profile' project.owner.id %}" style="color: var(--color-main);">{{project.owner.name}}</a>
+                                        </p>
+                                        <p style="margin-bottom: 8px; font-size: 1.4rem; color: var(--color-sub);">{{project.created|date:"d.m.Y" }}</p>
+                                        <div class="project__tags">
+                                            {% for tag in project.tags.all %}
+                                            <span class="tag tag--pill tag--main">
+                                                <small>{{ tag.name }}</small>
+                                            </span>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="like-section">
+                                            <button class="like-button" data-project-id="{{ project.id }}">
+                                                <span class="like-icon">&#9829;</span>
+                                                <span class="like-count">{{ project.likes.count }}</span>
+                                            </button>
+                                        </div>
+                                    
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-c.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">Another Landing Page</h3>
-                                <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">36%</span> Postitive
-                                    Feedback (18 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
+                <!-- Right Column (Useful Links) -->
+                <div class="column column--1of5">
+                    <section class="links-section">
+                        <h2 style="font-size: 2.6rem; color: var(--color-sub); text-align: center;">Полезные ссылки</h2>
+                        <div class="grid grid--two">
+                            {% for link in useful_links %}
+                            <div class="column">
+                                <div class="card link" style="width: auto; height: auto;">
+                                    <a href="{{ link.url }}" class="link" target="_blank">
+<!--                                        <img src="{{ link.icon_url.url }}" alt="Site Icon" class="link__icon">-->
+                                        <h3 class="link__title" style="font-size: 1.8rem; color: var(--color-sub); ">{{link.title}}</h3>
+                                        <p style="font-size: 1.1rem; color: var(--color-main);">Переход на сторонний сайт</p>
+                                    </a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
+                            {% endfor %}
+                        </div>
+                    </section>
                 </div>
-
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-a.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">Yoga Studio Landing Page Website and Design</h3>
-                                <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">98%</span> Postitive
-                                    Feedback (72 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-b.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">DevSearch UI Design</h3>
-                                <p><a class="project__author" href="profile.html">By Shahriar P. Shuvo</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">92%</span> Postitive
-                                    Feedback (62 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="card project">
-                        <a href="single-project.html" class="project">
-                            <img class="project__thumbnail" src="images/project-c.png" alt="project thumbnail"/>
-                            <div class="card__body">
-                                <h3 class="project__title">Another Landing Page</h3>
-                                <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p>
-                                <p class="project--rating">
-                                    <span style="font-weight: bold;">36%</span> Postitive
-                                    Feedback (18 Votes)
-                                </p>
-                                <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small>NextJS</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>GraphQL</small>
-                    </span>
-                                    <span class="tag tag--pill tag--main">
-                      <small>TypeScript</small>
-                    </span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
-
-    <!-- Links Section -->
-    <section class="links-section">
-        <div class="container">
-            <h2 style="font-size: 1.8rem;">Полезные ссылки</h2>
-            <div class="grid grid--two">
-<!--                {% for link in useful_links %}-->
-                <div class="column">
-                    <div class="card link">
-                        <a href="{{ link.url }}" class="link" target="_blank">
-                            <img src="{{ link.icon_url }}" alt="Site Icon" class="link__icon">
-                            <h3 class="link__title" style="font-size: 2.6rem;">{{ link.title }}</h3>
-                            <p>Visit our partner site.</p>
-                        </a>
-                    </div>
-                </div>
-<!--                {%endfor%}-->
-            </div>
-        </div>
-    </section>
-
-    <div class="pagination">
-        <ul class="container">
-            <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
-            <li><a href="#" class="btn btn--sub">01</a></li>
-            <li><a href="#" class="btn">02</a></li>
-            <li><a href="#" class="btn">03</a></li>
-            <li><a href="#" class="btn">04</a></li>
-            <li><a href="#" class="btn">05</a></li>
-            <li><a href="#" class="btn">06</a></li>
-            <li><a href="#" class="btn">07</a></li>
-            <li><a href="#" class="btn">08</a></li>
-            <li><a href="#" class="btn">09</a></li>
-            <li><a href="#" class="btn">10</a></li>
-            <li><a href="#" class="btn">Next &#10095;</a></li>
-        </ul>
-    </div>
+    {% include 'projects/pagination.html' with queryset=projects %}
 </main>
+
 
 {% endblock %}
 

@@ -22,21 +22,21 @@
 
 @media screen and (min-width: 1200px) {
   .container {
-    width: 80%;
+    width: 90%;
   }
 
   .container--narrow {
-    width: 72%;
+    width: 82%;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    width: 72%;
+    width: 92%;
   }
 
   .container--narrow {
-    width: 65%;
+    width: 85%; /*ширина*/
   }
 }
 

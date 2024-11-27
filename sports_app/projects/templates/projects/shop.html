@@ -1,0 +1,15 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <h2 style="text-align: center">Раздел "Shop" находится в разработке</h2>
+            <p style="text-align: center">Приносим извинения за неудобства. Мы работаем над этим разделом и скоро он станет доступен.</p>
+            <br>
+            <a class="backButton" href="{% url 'projects' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+        </div>
+    </div>
+</main>
+{% endblock %}

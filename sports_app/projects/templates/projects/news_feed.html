@@ -1,0 +1,239 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+
+<style>
+    /* Base styles for columns */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        position: relative;
+        width: 100%;
+        padding-right: 7px;
+        padding-left: 8px;
+        padding-bottom: 15px;
+
+    }
+
+    .column--1of5 {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    .column--3of5 {
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+    /* Comments section styles */
+    .comments-section {
+        width: 100%;
+        max-width: 400px; /* Фиксированная ширина */
+        margin-left: 10px;
+        margin-right: 0;
+        
+    }
+
+    /* .comments-section .card {
+        margin-bottom: 20px;
+        padding: 11px;
+        width: 300px;
+        background-color: var(--color-main-lighter);
+        border-color: var(--color-light);
+
+    } */
+
+    .comments-section .card {
+        padding: 11px;
+        width: 380px;
+        background-color: rgba(253, 253, 249, 0.963);
+        border: 2px solid rgba(206, 206, 204, 0.737);
+        border-radius: 5px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Добавляем плавный переход */
+    }
+
+    .comments-section .card:hover {
+        background-color: rgba(231, 231, 229, 0.963); /* Изменяем цвет фона при наведении */
+        transform: translateY(-5px); /* Сдвигаем блок вверх при наведении */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень при наведении */
+    }
+
+
+    .comments-section .link__icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .comments-section .link__title {
+        font-size: 2.0rem;
+        margin-bottom: 5px;
+    }
+
+    .comments-section .link p {
+        font-size: 1.8rem;  /*шрифт*/
+        color: #6c757d;
+    }
+
+
+    .column {
+    padding-top: 20px;
+
+    }
+
+    .project{
+    height: 100%;
+    
+    background-color: rgba(247, 247, 240, 0.409);
+    border: 2px solid rgba(206, 206, 204, 0.737);
+    border-radius: 5px;
+    }
+
+
+    .project-feed {
+        border-radius: 5px;
+        display: block;
+        position: relative;
+        width: 100%; /* Ширина контейнера */
+        height: 380px;
+        padding-top: 56.25%; /* Соотношение сторон 16:9 (9 / 16 * 100%) */
+        overflow: hidden; /* Скрываем элементы, выходящие за пределы контейнера */
+    }
+
+    .project-feed .project__thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Масштабируем изображение, чтобы заполнить контейнер */
+    }
+
+    .project-feed .project__thumbnail video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Масштабируем видео, чтобы заполнить контейнер */
+    }
+
+    .project-feed .card__body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+        color: white;
+        padding: 10px;
+        height: 100%;
+    }
+
+    .project-feed .author-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .project-feed .author-photo__img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+</style>
+
+<main class="projects">
+    <section class="projectsList">
+        <div class="container">
+            <section class="developer-blocks">
+                {% for profile in profiles %}
+                <a href="{% url 'user_profile' profile.id %}" class="developer-block" data-name="{{ profile.name }}">
+                    <img src="{{ profile.photo.url }}" alt="image">
+                </a>
+                {% endfor %}
+            </section>
+
+            <div class="row">
+                <div class="column column--3of5">
+                    <div class="grid grid--three">
+                        {% for item in news_feed_items %}
+                        <div class="column">
+                            <div class="project">
+                                <div class="project-feed">
+                                    <a href="{% if item.image %}{{ item.image.url }}{% else %}#{% endif %}">
+                                        {% if item.image %}
+                                        <img class="project__thumbnail" src="{{ item.image.url }}" alt="image">
+                                        {% elif item.video %}
+                                        <video class="project__thumbnail" controls>
+                                            <source src="{{ item.video.url }}" type="video/mp4">
+                                            Ваш браузер не поддерживает видео тег.
+                                        </video>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="card__body">
+                                    <div class="author-info">
+                                        <a href="{% url 'user_profile' item.profile.id %}" class="author-photo">
+                                            <img src="{{ item.profile.photo.url }}" alt="author photo"
+                                                 class="author-photo__img">
+                                        </a>
+                                        <p><a class="project__author" href="{% url 'user_profile' item.profile.id %}">{{item.profile.name}}</a>
+                                        </p>
+                                    </div>
+                                    {% if item.caption %}
+                                    <p class="photo-caption" title="{{ item.caption }}" style="margin-bottom: 5px;">
+                                        {{item.caption|truncatewords:15}}
+                                    </p>
+                                    <p style="font-size: 1.4rem; color: var(--color-sub);">
+                                        {{item.created|date:"d.m.Y"}}</p>
+                                    {% endif %}
+                                    <div class="like-section">
+                                        <button class="like-button" data-item-id="{{ item.id }}"
+                                                data-item-type="{% if item.image %}photo{% else %}video{% endif %}">
+                                            <span class="like-icon">&#9829;</span>
+                                            <span class="like-count">{{item.likes.count}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="column column--1of5">
+                    <h2 style="font-size: 2.6rem; color: var(--color-sub); text-align: center;">Комментарии</h2>
+                    <section class="comments-section">
+                        <div class="grid grid--two">
+                            {% for comment in all_comments %}
+                            <div class="column">
+                                <div class="card link">
+                                    <a href="{% url 'project' comment.project.id %}" class="link">
+                                        <h3 class="link__title" style=" font-size: 1.7rem;color:var(--color-sub)">
+                                            {{comment.project.title}}</h3>
+                                        {% if comment.profile and comment.profile.photo %}
+                                        <img src="{{ comment.profile.photo.url }}" alt="author photo"
+                                             class="author-photo__img">
+                                        {% endif %}
+                                        <h3 class="link__title" style=" font-size: 1.4rem;color: var(--color-sub);">
+                                            {{comment.author.username}} </h3>
+                                        <p style="font-size: 1.6rem; color: var(--color-main);">{{comment.content}}</p>
+                                        <p style="font-size: 1.2rem; color: var(--color-sub);">{{comment.created_at|date:"d.m.Y"}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    {% include 'projects/pagination.html' with queryset=news_feed_items %}
+</main>
+
+
+{% endblock %}
+

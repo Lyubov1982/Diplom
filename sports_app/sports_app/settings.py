@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'start.apps.StartConfig',
     'projects.apps.ProjectsConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # или 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'sports_app.urls'
 
@@ -123,8 +128,19 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "staticfiles",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_email_password'
+DEFAULT_FROM_EMAIL = 'your_email@example.com'

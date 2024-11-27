@@ -9,11 +9,11 @@
 }
 
 .layout > .column.column--1of3 {
-  flex-basis: 30%;
+  flex-basis: 20%;
 }
 
 .layout > .column.column--2of3 {
-  flex-basis: 64%;
+  flex-basis: 74%;
 }
 
 .layout > .column.column--1of2 {

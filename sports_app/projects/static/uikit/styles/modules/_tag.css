@@ -47,7 +47,7 @@
 .tag--sub,
 .tag--sub > small {
   background: var(--color-sub-lighter);
-  color: var(--color-sub-light);
+  color: var(--color-sub);
   font-weight: 500;
 }
 

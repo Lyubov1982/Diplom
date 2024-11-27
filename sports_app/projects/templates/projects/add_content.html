@@ -1,0 +1,28 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+{% block content %}
+<main class="formPage my-xl">
+    <div class="content-box">
+
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'account' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+            <br>
+
+            <div class="role-container">
+                <div class="auth__actions1">
+                    <a href="{% url 'create-project' %}" class="btn btn--sub1 btn--lg">Добавить статью</a>
+                </div>
+                <div class="auth__actions1">
+                    <a href="{% url 'upload_photo' %}" class="btn btn--sub1 btn--lg">Добавить фото</a>
+                </div>
+                <div class="auth__actions1">
+                    <a href="{% url 'upload_video' %}" class="btn btn--sub1 btn--lg">Добавить видео</a>
+                </div>
+                <div class="auth__actions1">
+                    <a href="{% url 'add-useful-link' %}" class="btn btn--sub1 btn--lg">Добавить полезную ссылку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

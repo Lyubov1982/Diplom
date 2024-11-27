@@ -1,0 +1,30 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="formPage my-xl">
+    <div class="content-box">
+        <h2 style="text-align: center">Создать профиль?</h2>
+        <p style='color: red; text-align: center'>Создавать профиль могут пользователи, которые имеют документ, подтверждающий их квалификацию.</p>
+        <br>
+
+        <div class="formWrapper">
+
+            <div class="role-container">
+                <div class="auth__actions1">
+                    <form method="post" action="{% url 'offer_profile_creation' %}">
+                        {% csrf_token %}
+                        <button type="submit" name="create_profile" class="btn btn--sub1 btn--lg">Создать профиль</button>
+                    </form>
+                </div>
+                <div class="auth__actions1">
+                    <form method="post" action="{% url 'offer_profile_creation' %}">
+                        {% csrf_token %}
+                        <button type="submit" name="skip_profile" class="btn btn--sub1 btn--lg">Пропустить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

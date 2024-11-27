@@ -1,0 +1,40 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+<!-- Main Section -->
+<main class="home">
+    <section class="devlist">
+        <div class="container">
+            <div class="grid grid--three">
+                {% for profile in profiles %}
+                <div class="column card">
+                    <div class="dev">
+                        <a href="{% url 'user_profile' profile.id %}" class="card__body">
+                            <div class="dev__profile">
+                                <img class="avatar avatar--md" src="{{profile.photo.url }}" alt="image"/>
+                                <div class="dev__meta">
+                                    <h3>{{profile.name}}</h3>
+                                    <h5>{{profile.myself_short|slice:'50'}}</h5>
+                                </div>
+                            </div>
+                            <p class="dev__info">
+                                {{profile.myself|slice:'150'}}
+                            </p>
+                            <div class="dev__skills">
+                                {% for skill in profile.skill_set.all %}
+                                <span class="tag tag--pill tag--main">
+                    <small>{{ skill }}</small>
+                  </span>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'projects/pagination.html' with queryset=profiles %}
+</main>
+
+{% endblock %}

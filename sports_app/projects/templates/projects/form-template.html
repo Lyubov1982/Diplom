@@ -1,0 +1,59 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+.scrollable-checkbox-list {
+    max-height: 130px; /* Максимальная высота контейнера */
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
+    border: 1px solid #ccc; /* Добавляем границу */
+    padding: 10px; /* Добавляем отступы */
+}
+
+.scrollable-checkbox-list .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Отступ между чекбоксами */
+}
+
+.scrollable-checkbox-list .checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+}
+</style>
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <h3>Добавить Tag</h3>
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {% for field in tag_form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{ field.label }}: </label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <input class="btn btn--sub btn--lg  my-md" type="submit" name="add_tag" value="Добавить"/>
+            </form>
+        </div>
+        <br>
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'account' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+            <br>
+
+            <h3>Написать статью</h3>
+            <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in project_form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{ field.label }}: </label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <input class="btn btn--sub btn--lg  my-md" type="submit" name="submit_project" value="Сохранить"/>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

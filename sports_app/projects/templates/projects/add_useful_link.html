@@ -1,12 +1,24 @@
 {% extends 'projects/base.html' %}
+{% load static %}
 {% block content %}
-<h1>Add Useful Link</h1>
-<form method="post">
-    {% csrf_token %}
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
-    <label for="url">URL:</label>
-    <input type="url" id="url" name="url" required>
-    <button type="submit">Add Link</button>
-</form>
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'add_content' %}"><img src="{% static 'images/left.png' %}" alt="left"></a>
+            <br>
+
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <h3>Добавить полезные ссылки</h3>
+                 {% for field in form %}
+                <div class="form__field">
+                <label for="formInput#text">{{ field.label }}:</label>
+                 {{ field }}
+                </div>
+                {% endfor %}
+                <input class="btn btn--sub btn--lg  my-md" type="submit" name="add_url" value="Добавить" />
+            </form>
+        </div>
+    </div>
+</main>
 {% endblock %}

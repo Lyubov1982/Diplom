@@ -25,9 +25,9 @@
     --generic-transition: all 0.3s ease-in-out;
 }
 
-.btn--sub {
-  background-color: var(--color-main);
-}
+/*.btn--sub {
+  background-color: var(--color-light-gray);
+}*/
 
 .card {
   border: 2px solid var(--color-light);
@@ -48,11 +48,18 @@ img {
   margin: 0 auto;
 }
 
+
 /*Navbar*/
+
 .header {
     position: relative;
     overflow: hidden;
-    /*height: 300px; Устанавливаем высоту шапки */
+    height: 390px; /*Устанавливаем высоту шапки */
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .header__background {
@@ -62,6 +69,8 @@ img {
     width: 100%;
     height: 100%;
     z-index: -2;
+    object-fit: cover;
+    
 }
 
 .header__background::before {
@@ -71,7 +80,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный слой */
+    background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный слой */
     z-index: 1;
 }
 
@@ -79,65 +88,16 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+    /* object-fit: contain; */
+    background-position: center; /* Центрирует изображение */
+    background-repeat: no-repeat; /* Не повторяет изображение */
+} 
 
 .container {
     position: relative;
     z-index: 2;
 }
-
-/*=======================
-  Developer
-========================*/
-.developer-blocks {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 10px 10px;
-  margin-bottom: 20px;
-}
-
-.developer-block {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: #007bff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  flex: 0 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.developer-block img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.developer-block:hover {
-  background-color: #0056b3;
-}
-
-.developer-block:hover::after {
-  content: attr(data-name);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-size: 14px;
-}
+ /*  поисковая строка */
 
 .header__search {
   display: flex;
@@ -173,11 +133,12 @@ img {
   position: sticky;
   z-index: 111;
   background-color: var(--color-sub);
-  padding: 3.5rem 0;
+  padding: 5.5rem 0;
+  weight: 300;
 }
 
 .header > .container {
-  display: flex;
+  /*display: flex;*/
   justify-content: space-between;
   align-items: left;
 }
@@ -186,11 +147,22 @@ img {
   height: 4.5rem;
 }
 
+/* блок меню с иконками */
+
 .header__nav > ul {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   list-style: none;
-  gap: 6.5rem;
+  gap: 12.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.header__nav > ul > li {
+  display: inline-flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
 }
 
 .header__menuItem > a {
@@ -320,12 +292,13 @@ img {
 }
 
 .hero-section__box {
-  margin-bottom: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .hero-section__box > h2,
 .hero-section__box > h2 > span {
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--color-light);
   line-height: 1.3;
   text-transform: uppercase;
@@ -441,8 +414,8 @@ img {
   Pagination
 ========================*/
 .pagination {
-  margin-top: 8rem;
-  margin-bottom: 10rem;
+  margin-top: 6rem;
+  margin-bottom: 8rem;
 }
 
 .pagination > ul {
@@ -521,7 +494,7 @@ img {
 
 .devInfo__about,
 .devSkill__info {
-  font-size: 1.45rem;
+  font-size: 1.65rem;
   line-height: 1.7;
   text-align: justify;
 }
@@ -576,6 +549,13 @@ img {
   border-bottom: 2px solid transparent;
 }
 
+.singleProject__liveLink::after {
+  content: '|';
+  position: absolute;
+  right: -5px;
+  color: #ccc;
+}
+
 .singleProject__liveLink:hover {
   font-weight: 500;
   border-bottom: 2px solid var(--color-main);
@@ -583,8 +563,9 @@ img {
 
 .singleProject__liveLink i {
   display: inline-block;
-  font-size: 1.6rem;
-  margin-right: 1rem;
+  font-size: 1.8rem;
+  /*margin-right: 1rem;*/
+  margin-top: 3rem;
 }
 
 .singleProject__preview {
@@ -601,10 +582,11 @@ img {
 }
 
 .singleProject__title {
-  font-size: 3.6rem;
+  font-size: 3.2rem;
   font-weight: 700;
   color: var(--color-sub);
   margin-bottom: 3rem;
+  margin-top: 2rem;
 }
 
 .project__author{
@@ -621,7 +603,7 @@ img {
   text-transform: uppercase;
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--color-sub-light);
+  color: var(--color-sub);
   margin-bottom: 1rem;
 }
 
@@ -648,9 +630,9 @@ img {
 }
 /* основные статьи */
 .projectsList {
-  margin-top: 8rem;
+  margin-top: 4rem;
   flex: 2;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 /* блок ссылок */
 .links-section {
@@ -674,6 +656,7 @@ img {
   object-fit: cover;
   object-position: top center;
   width: 100%;
+  height: 100%;
 }
 
 .project__title {
@@ -691,7 +674,7 @@ img {
 /*========== Comments ==========*/
 
 .comments {
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding-top: 3rem;
   border-top: 2px solid var(--color-light);
 }
@@ -746,9 +729,12 @@ img {
 
 .settings__table {
   margin-top: 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   padding: 0 3rem;
-  background: var(--color-white);
+  /*background: var(--color-white);*/
+  background-color: rgba(247, 247, 245, 0.409);
+  border: 2px solid var(--color-white);
+  border-radius: 1rem;
 }
 
 .settings__table tr {
@@ -767,12 +753,35 @@ img {
   width: 23%;
   min-width: 10rem;
 }
-
+/* Стили для фото */
 .settings__thumbnail img {
   padding-right: 3rem;
   height: 15rem;
   object-fit: contain;
 }
+
+/* Стили для контейнера фото и видео */
+/*.settings__thumbnail {
+    width: 23%;
+    min-width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Скрываем части фото и видео, которые выходят за пределы контейнера */
+    /*position: relative; /* Добавляем позиционирование для контейнера */
+/*}*/
+
+
+
+/* Стили для видео */
+.settings__thumbnail video {
+    max-width: 100%; /* Максимальная ширина видео будет равна ширине родительского контейнера */
+    max-height: 100%; /* Максимальная высота видео будет равна высоте родительского контейнера */
+    width: 100% !important; /* Ширина видео будет равна ширине родительского контейнера */
+    height: auto !important; /* Автоматическая высота видео */
+    object-fit: contain !important; /* Масштабируем видео, чтобы оно поместилось в контейнер, сохраняя пропорции */
+}
+
 
 .settings__tableInfo{
   width: 100%;
@@ -820,18 +829,19 @@ img {
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(../images/pattern.jpg);
+  background: url(../images/pattern1.jpg);
 }
 
 .auth > .card {
   padding: 3rem 4rem;
   width: 95%;
   max-width: 65rem;
+  /*max-height: 105rem; /*высота формы регистрации */
 }
 
 @media screen and (min-width: 650px) {
   .auth > .card {
-    padding: 5rem 8rem;
+    padding: 3rem 5rem;
     width: 95%;
     max-width: 65rem;
   }
@@ -966,7 +976,7 @@ img {
 }
 
 .messagePage .message__date {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 400;
   text-align: left;
   margin-bottom: 3rem;
@@ -975,16 +985,23 @@ img {
 .backButton {
   background: var(--color-main-light);
   color: var(--color-main);
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
 }
 
+.backButton img {
+  width: 80%; /* Задайте ширину изображения */
+  height: 80%; /* Задайте высоту изображения */
+  object-fit: contain; /* Масштабирует изображение, чтобы оно полностью поместилось в контейнер */
+  align-items: center;
+}
+
 .backButton i {
-  font-size: 1.8rem;
+  font-size: 5.8rem;
 }
 
 
@@ -1005,4 +1022,299 @@ img {
   color: var(--color-sub);
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+/*=======================
+  Блок добавить
+========================*/
+
+.role-container {
+    text-align: center;
+}
+
+.auth__actions1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 12px;
+}
+
+.btn--sub1 {
+    background-color: var(--color-sub);
+    color: var(--color-white);
+}
+
+.btn--sub1:hover {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+}
+
+.btn--sub:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+
+/* полезные ссылки */
+/* Base styles for columns */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.column {
+    position: relative;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.column--1of5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.column--3of5 {
+    flex: 0 0 80%;
+    max-width: 80%;
+}
+
+/* Links section styles */
+.links-section {
+    width: 100%;
+    max-width: auto; /* Фиксированная ширина */
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.links-section .card {
+    margin-bottom: 20px;
+}
+
+.links-section .link__icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.links-section .link__title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.links-section .link p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Grid styles  25/11/24 */
+/*.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.grid--two {
+    flex-direction: column;
+}
+
+.grid--two .column {
+    flex: 0 0 100%;
+    max-width: 100%;
+}*/
+
+/* блок новости добавляем аватар */
+/*=======================
+  Developer
+========================*/
+.developer-blocks {
+  display: flex; /* Используем flexbox для выстраивания элементов в ряд */
+  overflow-x: auto; /* Добавляем горизонтальную прокрутку, если элементов много */
+  white-space: nowrap; /* Запрещаем перенос строк */
+  padding: 10px; /* Добавляем отступы вокруг контейнера */
+  margin: 20px 10px 40px 10px; /* Добавляем отступы вокруг контейнера */
+  gap: 17px;
+}
+
+.developer-block {
+  width: 150px; /* Фиксируем ширину блока */
+  height: 150px; /* Фиксируем высоту блока */
+  border-radius: 50%; /* Делаем блоки круглыми */
+  background-color: #007bff; /* Цвет фона блока */
+  border: 5px solid #302f3462; /* Добавляем желтую рамку толщиной 5px */
+  display: flex; /* Используем flexbox для центрирования содержимого */
+  align-items: center; /* Выравниваем содержимое по вертикали */
+  justify-content: center; /* Выравниваем содержимое по горизонтали */
+  margin-right: 10px; /* Добавляем отступ между блоками */
+  color: white; /* Цвет текста */
+  text-decoration: none; /* Убираем подчеркивание ссылки */
+  font-weight: bold; /* Жирный шрифт */
+  flex: 0 0 auto; /* Запрещаем блокам растягиваться */
+  position: relative; /* Относительное позиционирование для псевдоэлемента */
+  overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
+}
+
+.developer-block img {
+  width: 100%; /* Заполняем блок изображением */
+  height: 100%; /* Заполняем блок изображением */
+  object-fit: cover; /* Масштабируем изображение, чтобы оно заполнило блок */
+}
+
+.developer-block:hover {
+  background-color: #0056b3; /* Изменяем цвет фона при наведении */
+}
+
+.developer-block:hover::after {
+  content: attr(data-name); /* Добавляем псевдоэлемент с атрибутом data-name */
+  position: absolute; /* Абсолютное позиционирование */
+  top: 0; /* Прижимаем псевдоэлемент к верхней границе блока */
+  left: 0; /* Прижимаем псевдоэлемент к левой границе блока */
+  width: 100%; /* Заполняем блок псевдоэлементом */
+  height: 100%; /* Заполняем блок псевдоэлементом */
+  display: flex; /* Используем flexbox для центрирования содержимого */
+  align-items: center; /* Выравниваем содержимое по вертикали */
+  justify-content: center; /* Выравниваем содержимое по горизонтали */
+  background-color: rgba(0, 0, 0, 0.7); /* Цвет фона псевдоэлемента */
+  color: white; /* Цвет текста псевдоэлемента */
+  font-size: 14px; /* Размер шрифта псевдоэлемента */
+}
+
+/*===========================*/
+
+/* Base styles for columns */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-right: -15px;
+    margin-left: -15px; */
+}
+
+.column {
+    position: relative;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.column--1of5 {
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+
+.column--3of5 {
+    flex: 0 0 70%;
+    max-width: 70%;
+}
+
+/* Project card styles */
+/*.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+} 25/11/24*/
+
+.project__thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.card__body {
+    padding: 10px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.author-photo {
+    margin-right: 10px;
+}
+
+.author-photo__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.project__author {
+    font-weight: bold;
+}
+
+/* Video section styles */
+.video-section {
+    margin-top: 40px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: flex-start; /* Выравниваем видео по левой стороне */
+}
+
+.video-container iframe {
+    max-width: 100%;
+}
+
+/*лайки*/
+/* static/styles/app.css */
+
+/* Стили для кнопок лайков */
+.like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+    font-size: 1.4rem;
+}
+
+.like-button .like-icon {
+    color: red;
+    margin-right: 5px;
+}
+
+.like-button:hover .like-icon {
+    color: darkred;
+}
+
+.like-button .like-count {
+    color: black;
+}
+
+.like-button:hover .like-count {
+    color: darkred;
+}
+
+/*новости текст при наведении на фото*/
+.photo-caption {
+    position: relative;
+    display: inline-block;
+}
+
+.photo-caption::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.photo-caption:hover::after {
+    opacity: 1;
+    visibility: visible;
 }

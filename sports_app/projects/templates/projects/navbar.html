@@ -2,12 +2,12 @@
 
 <header class="header">
     <div class="header__background">
-        <img src="{% static 'images/orig.jpeg' %}" alt="Background Image" class="header__background-image">
+        <img src="{% static background_image %}" alt="Background Image" class="header__background-image">
     </div>
     <div class="container container--narrow">
-        <a href="/" class="header__logo">
-            <img src="{% static 'images/running.png' %}" alt="DevSearch Logo"/>
-        </a>
+<!--                <a href="{% url 'profiles' %}" class="header__logo">-->
+<!--                    <img src="{% static 'images/logo.jpg' %}" alt="S&h Logo"/>-->
+<!--                </a>-->
         <nav class="header__nav">
             <input type="checkbox" id="responsive-menu"/>
             <label for="responsive-menu" class="toggle-menu">
@@ -15,25 +15,48 @@
                 <div class="toggle-menu__lines"></div>
             </label>
             <ul class="header__menu" style="font-weight: bold;">
-                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'projects' %}"> Главная</a></li>
-                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'sport' %}"> SPORT</a></li>
-                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'healthy' %}">Здоровье</a></li>
-                <li class="header__menuItem" style="font-size: 20px;"><a href="index.html">ПРОФИ</a></li>
-<!--                <li class="header__menuItem" style="font-size: 20px;"><a href="inbox.html">Inbox</a></li>-->
-                <li class="header__menuItem" style="font-size: 18px;"><a href="account.html">My Account</a></li>
-                <li class="header__menuItem" style="font-size: 20px;"><a href="login.html" class="btn btn--sub">Login/Sign Up</a></li>
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'projects' %}" title="о Главном"><i
+                        class="fas fa-home"></i></a></li>
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'news_feed' %}" title="Новости"><i
+                        class="fas fa-file-alt"></i></a></li>
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'profiles' %}" title="Профессионалы"><i class="fas fa-users"></i></a></li>
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'shop' %}" title="Магазин">SHOP</a></li>
+                {% if user.is_authenticated %}
+                {% if not request.user.profile %}
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'create_profile' %}"
+                                                                         title="Создать аккаунт"><i class="fas fa-user-edit"></i></a></li>
+                {% endif %}
+                {% if request.user.profile %}
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'account' %}" title="Аккаунт"><i
+                        class="fas fa-user"></i></a></li>
+                <li class="header__menuItem" style="font-size: 32px;"><a href="{% url 'add_content' %}"
+                                                                         title="Добавить контент"><i
+                        class="fas fa-plus-circle"></i></a></li>
+                {% endif %}
+                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'logout' %}" class="btn btn--sub">Выйти</a>
+                </li>
+                {% else %}
+                <li class="header__menuItem" style="font-size: 20px;"><a href="{% url 'login' %}" class="btn btn--sub">Войти</a>
+                </li>
+                {% endif %}
             </ul>
-            <div class="hero-section__search">
-                <form class="form" action="#" method="get">
+            <div class="hero-section__box" style="text-align: center;">
+                <h2>Sport & healthy<span> lifestyle </span></h2>
+                <h2>ЗОЖники</h2>
+            </div>
+            {% if not hide_search %}
+            <div class="hero-section__search" style="margin-bottom: 10px;">
+
+                <form class="form" method="get" id="search">
                     <div class="form__field">
                         <label for="formInput#search">Поиск</label>
-                        <input class="input input--text" id="formInput#search" type="text" name="text"
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query" value="{{search_query}}"
                                placeholder="Введите текст для поиска"/>
                     </div>
-
                     <input class="btn btn--sub btn--lg" type="submit" value="Поиск"/>
                 </form>
             </div>
+            {% endif %}
         </nav>
     </div>
 </header>
