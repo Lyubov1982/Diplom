@@ -18,7 +18,52 @@
         margin-right: -2%;
     }
 
+    .project{
+        height: 100%;
+        background-color: rgba(247, 247, 240, 0.409);
+        border: 2px solid rgba(206, 206, 204, 0.737);
+        border-radius: 5px;
+        }
+
+    .project-feed {
+            border-radius: 5px;
+            display: block;
+            position: relative;
+            width: 100%; /* Ширина контейнера */
+            height: 350px;
+            padding-top: 56.25%; /* Соотношение сторон 16:9 (9 / 16 * 100%) */
+            overflow: hidden; /* Скрываем элементы, выходящие за пределы контейнера */
+        }
+
+    .project-feed .project__thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Масштабируем изображение, чтобы заполнить контейнер */
+        }
+
+    .project-feed .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-feed .card__body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+            color: white;
+            padding: 10px;
+            height: 100%;
+    }
 </style>
+
 
 <main class="profile my-md">
     <div class="container">
@@ -100,7 +145,8 @@
                                         <p>{{ photo.caption|truncatewords:20 }}</p>
                                         {% endif %}
                                         <div class="like-section">
-                                            <button class="like-button" data-item-id="{{ photo.id }}" data-item-type="photo">
+                                            <button class="like-button" data-item-id="{{ photo.id }}"
+                                                    data-item-type="photo">
                                                 <span class="like-icon">&#9829;</span>
                                                 <span class="like-count">{{ photo.likes.count }}</span>
                                             </button>
@@ -112,31 +158,45 @@
                         {% endfor %}
                         {% endif %}
 
+
                         {% if profile.videos.all %}
                         {% for video in profile.videos.all %}
                         <div class="column">
                             <div class="card project">
-                                <a href="{{ video.video.url }}" class="project">
-                                    <video class="project__thumbnail" controls>
-                                        <source src="{{ video.video.url }}" type="video/mp4">
-                                        Ваш браузер не поддерживает видео тег.
-                                    </video>
-                                    <div class="card__body">
-                                        {% if video.caption %}
-                                        <p>{{ video.caption|truncatewords:20 }}</p>
-                                        {% endif %}
-                                        <div class="like-section">
-                                            <button class="like-button" data-item-id="{{ video.id }}" data-item-type="video">
-                                                <span class="like-icon">&#9829;</span>
-                                                <span class="like-count">{{ video.likes.count }}</span>
-                                            </button>
+                                <div class="project-feed">
+                                    <a href="{% if video.video_type == 'local' and video.video %}{{ video.video.url }}{% elif video.video_type == 'url' %}{{ video.video_url }}{% endif %}">
+                                        {% if video.video_type == 'local' and video.video %}
+                                        <video class="project__thumbnail" controls>
+                                            <source src="{{ video.video.url }}" type="video/mp4">
+                                            Ваш браузер не поддерживает видео тег.
+                                        </video>
+                                        {% elif video.video_type == 'url' %}
+                                        <div class="video-container">
+                                            <iframe src="{{ video.video_url }}" frameborder="0"
+                                                    allowfullscreen></iframe>
                                         </div>
+                                        {% else %}
+                                        <p>Видео не загружено</p>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="card__body">
+                                    {% if video.caption %}
+                                    <p>{{ video.caption|truncatewords:20 }}</p>
+                                    {% endif %}
+                                    <div class="like-section">
+                                        <button class="like-button" data-item-id="{{ video.id }}"
+                                                data-item-type="video">
+                                            <span class="like-icon">&#9829;</span>
+                                            <span class="like-count">{{ video.likes.count }}</span>
+                                        </button>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                         {% endfor %}
                         {% endif %}
+
 
                         {% if not profile.photos.all and not profile.videos.all %}
                         <p>Новостей пока нет</p>
@@ -164,7 +224,8 @@
                                             {% endfor %}
                                         </div>
                                         <div class="like-section">
-                                            <button class="like-button" data-item-id="{{ project.id }}" data-item-type="project">
+                                            <button class="like-button" data-item-id="{{ project.id }}"
+                                                    data-item-type="project">
                                                 <span class="like-icon">&#9829;</span>
                                                 <span class="like-count">{{ project.likes.count }}</span>
                                             </button>
@@ -180,7 +241,6 @@
         </div>
     </div>
 </main>
-
 
 
 {% endblock %}

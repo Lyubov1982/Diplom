@@ -1,13 +1,14 @@
 from django.db import models
 from users.models import Profile
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Project(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Автор')
     sections = models.ManyToManyField('Section', blank=True, verbose_name='Категории')
     title = models.CharField(max_length=200, verbose_name='Название')
-    description = models.TextField(blank=True, verbose_name='Описание')
+    description = RichTextUploadingField(blank=True, verbose_name='Описание')
     featured_image = models.ImageField(default='default.jpg', upload_to='projects/%Y/%m/%d', verbose_name='Изображение')
     demo_link = models.CharField(max_length=200, blank=True, verbose_name='Ссылка на демонстрацию')
     source_link = models.CharField(max_length=200, blank=True, verbose_name='Ссылка на источник')

@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import Project, Tag, UsefulLink, Comment, Section
 from .widgets import ScrollableCheckboxSelectMultiple
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class ProjectForm(forms.ModelForm):
@@ -14,6 +15,7 @@ class ProjectForm(forms.ModelForm):
         widgets = {
             'sections': ScrollableCheckboxSelectMultiple(),
             'tags': ScrollableCheckboxSelectMultiple(),
+            'description': CKEditorUploadingWidget(),
         }
 
     def __init__(self, *args, **kwargs):

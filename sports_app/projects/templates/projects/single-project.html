@@ -23,7 +23,7 @@
                 <h2 class="singleProject__title">{{ project.title }}</h2>
                 <!--                <h3 class="singleProject__subtitle">About the Project</h3>-->
                 <div class="singleProject__info" style="font-size: 1.8rem;">
-                    {{ project.description|linebreaks }}
+                    {{ project.description|safe }}
                 </div>
                 {% if project.source_link %}
                 <a class="singleProject__liveLink" href="{{ project.source_link }}" target="_blank"
@@ -61,8 +61,7 @@
                                 <img class="avatar avatar--md" src="{{ comment.profile.photo.url }}" alt="user"/>
                             </a>
                             <div class="comment__details">
-                                <a href="{% url 'user_profile' comment.profile.id %}" class="comment__author">{{
-                                    comment.author.username }}</a>
+                                <a href="{% url 'user_profile' comment.profile.id %}" class="comment__author">{{comment.author.username}}</a>
                                 {% else %}
                                 <div class="comment__details">
                                     <span class="comment__author">{{ comment.author.username }}</span>

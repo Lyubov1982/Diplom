@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  # или 'bootstrap5'
 
@@ -137,10 +139,13 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@example.com'
-EMAIL_HOST_PASSWORD = 'your_email_password'
-DEFAULT_FROM_EMAIL = 'your_email@example.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.example.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your_email@example.com'  # Ваш email адрес
+# EMAIL_HOST_PASSWORD = 'your_password'  # Пароль от вашего email аккаунта
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Email адрес, от которого будут отправляться письма
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"

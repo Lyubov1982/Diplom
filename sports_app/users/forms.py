@@ -60,16 +60,48 @@ class PhotoForm(forms.ModelForm):
             field.widget.attrs.update({'class': 'input'})
 
 
+# class VideoForm(forms.ModelForm):
+#     class Meta:
+#         model = Video
+#         fields = ['video', 'caption']
+#
+#     def __init__(self, *args, **kwargs):
+#         super(VideoForm, self).__init__(*args, **kwargs)
+#
+#         for field in self.fields.values():
+#             field.widget.attrs.update({'class': 'input'})
+
+
 class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
-        fields = ['video', 'caption']
+        fields = ['video_type', 'video', 'video_url', 'caption']
+        widgets = {
+            'video_type': forms.RadioSelect(attrs={'class': 'input'}),
+            'video': forms.FileInput(attrs={'class': 'input'}),
+            'video_url': forms.URLInput(attrs={'class': 'input'}),
+            'caption': forms.Textarea(attrs={'class': 'input'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(VideoForm, self).__init__(*args, **kwargs)
 
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'input'})
+
+    def clean(self):
+        cleaned_data = super().clean()
+        video_type = cleaned_data.get('video_type')
+        video = cleaned_data.get('video')
+        video_url = cleaned_data.get('video_url')
+
+        if video_type == 'local' and not video:
+            self.add_error('video', 'Пожалуйста, загрузите видео файл.')
+        elif video_type == 'url' and not video_url:
+            self.add_error('video_url', 'Пожалуйста, введите ссылку на видео.')
+
+        return cleaned_data
+
 
 
 class MessageForm(ModelForm):

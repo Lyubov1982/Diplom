@@ -90,7 +90,7 @@
                         </td>
                         <td class="settings__tableInfo">
                             <a href="{% url 'project' project.id %}">{{ project.title }}</a>
-                            <p>{{ project.description|truncatewords:40 }}</p>
+                            <p>{{ project.description|safe|truncatewords:40 }}</p>
                         </td>
                         <td class="settings__tableActions">
                             <a class="tag tag--pill tag--main settings__btn"
@@ -140,30 +140,66 @@
                             class="im im-plus"></i> Добавить</a>
                 </div>
 
-                <table class="settings__table">
-                    {% for video in profile.videos.all %}
-                    <tr>
-                        <td class="settings__thumbnail">
-                            <a href="{{ video.video.url }}">
-                                <video src="{{ video.video.url }}" alt="Video Thumbnail" controls></video>
-                            </a>
-                            <br>
-                        </td>
-                        <td class="settings__tableInfo">
-                            <a href="{{ video.video.url }}">{{ video.caption }}</a>
-                            <p>{{ video.description }}</p>
-                        </td>
-                        <td class="settings__tableActions">
-                            <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-video' video.id %}"><i
-                                    class="im im-edit"></i>
-                                Edit</a>
-                            <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-video' video.id %}"><i
-                                    class="im im-x-mark-circle-o"></i>
-                                Delete</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
+
+
+
+<!--                <table class="settings__table">-->
+<!--                    {% for video in profile.videos.all %}-->
+<!--                    <tr>-->
+<!--                        <td class="settings__thumbnail">-->
+<!--                            <a href="#">-->
+<!--                                <video src="" alt="Video Thumbnail" controls></video>-->
+<!--                            </a>-->
+<!--                            <br>-->
+<!--                        </td>-->
+<!--                        <td class="settings__tableInfo">-->
+<!--                            <a href="#">{{ video.caption }}</a>-->
+<!--                            <p>{{ video.description }}</p>-->
+<!--                        </td>-->
+<!--                        <td class="settings__tableActions">-->
+<!--                            <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="{% url 'update-video' video.id %}"><i-->
+<!--                                    class="im im-edit"></i>-->
+<!--                                Edit</a>-->
+<!--                            <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="{% url 'delete-video' video.id %}"><i-->
+<!--                                    class="im im-x-mark-circle-o"></i>-->
+<!--                                Delete</a>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
+<!--                </table>-->
+
+
+
+<table class="settings__table">
+    {% for video in profile.videos.all %}
+    <tr>
+        <td class="settings__thumbnail">
+            <a href="{% if video.video_type == 'local' and video.video %}{{ video.video.url }}{% elif video.video_type == 'url' %}{{ video.video_url }}{% endif %}">
+                {% if video.video_type == 'local' and video.video %}
+                <video src="{{ video.video.url }}" alt="Video Thumbnail" controls></video>
+                {% elif video.video_type == 'url' %}
+                <iframe width="300" height="200" src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                {% else %}
+                <p>Видео не загружено</p>
+                {% endif %}
+            </a>
+            <br>
+        </td>
+        <td class="settings__tableInfo">
+            <a href="{% if video.video_type == 'local' and video.video %}{{ video.video.url }}{% elif video.video_type == 'url' %}{{ video.video_url }}{% endif %}">{{ video.caption }}</a>
+            <p>{{ video.description }}</p>
+        </td>
+        <td class="settings__tableActions">
+            <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-video' video.id %}"><i class="im im-edit"></i> Edit</a>
+            <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-video' video.id %}"><i class="im im-x-mark-circle-o"></i> Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
             </div>
         </div>
     </div>

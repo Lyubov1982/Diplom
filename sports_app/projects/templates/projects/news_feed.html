@@ -11,7 +11,7 @@
     .column {
         position: relative;
         width: 100%;
-        padding-right: 7px;
+        padding-right: 8px;
         padding-left: 8px;
         padding-bottom: 15px;
 
@@ -23,32 +23,23 @@
     }
 
     .column--3of5 {
-        flex: 0 0 80%;
-        max-width: 80%;
+        flex: 0 0 75%;
+        max-width: 75%;
     }
 
     /* Comments section styles */
     .comments-section {
         width: 100%;
-        max-width: 400px; /* Фиксированная ширина */
+        max-width: 380px; /* Фиксированная ширина */
         margin-left: 10px;
         margin-right: 0;
         
     }
 
-    /* .comments-section .card {
-        margin-bottom: 20px;
-        padding: 11px;
-        width: 300px;
-        background-color: var(--color-main-lighter);
-        border-color: var(--color-light);
-
-    } */
-
     .comments-section .card {
         padding: 11px;
         width: 380px;
-        background-color: rgba(253, 253, 249, 0.963);
+        background-color: rgba(253, 253, 249, 0.973);
         border: 2px solid rgba(206, 206, 204, 0.737);
         border-radius: 5px;
         margin-bottom: 10px;
@@ -60,7 +51,6 @@
         transform: translateY(-5px); /* Сдвигаем блок вверх при наведении */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень при наведении */
     }
-
 
     .comments-section .link__icon {
         width: 50px;
@@ -79,10 +69,10 @@
     }
 
 
-    .column {
+    /* .column {
     padding-top: 20px;
 
-    }
+    } */
 
     .project{
     height: 100%;
@@ -156,19 +146,23 @@
 
             <div class="row">
                 <div class="column column--3of5">
+
                     <div class="grid grid--three">
                         {% for item in news_feed_items %}
                         <div class="column">
                             <div class="project">
                                 <div class="project-feed">
-                                    <a href="{% if item.image %}{{ item.image.url }}{% else %}#{% endif %}">
+                                    <a href="{% if item.image %}{{ item.image.url }}{% elif item.video_type == 'local' %}{{ item.video.url }}{% elif item.video_type == 'url' %}{{ item.video_url }}{% else %}#{% endif %}">
                                         {% if item.image %}
                                         <img class="project__thumbnail" src="{{ item.image.url }}" alt="image">
-                                        {% elif item.video %}
+                                        {% elif item.video_type == 'local' %}
                                         <video class="project__thumbnail" controls>
                                             <source src="{{ item.video.url }}" type="video/mp4">
                                             Ваш браузер не поддерживает видео тег.
                                         </video>
+                                        {% elif item.video_type == 'url' %}
+                                        <iframe class="project__thumbnail" width="560" height="315"
+                                                src="{{ item.video_url }}" frameborder="0" allowfullscreen></iframe>
                                         {% endif %}
                                     </a>
                                 </div>
@@ -178,21 +172,19 @@
                                             <img src="{{ item.profile.photo.url }}" alt="author photo"
                                                  class="author-photo__img">
                                         </a>
-                                        <p><a class="project__author" href="{% url 'user_profile' item.profile.id %}">{{item.profile.name}}</a>
-                                        </p>
+                                        <p><a class="project__author" href="{% url 'user_profile' item.profile.id %}">{{item.profile.name}}</a></p>
                                     </div>
                                     {% if item.caption %}
                                     <p class="photo-caption" title="{{ item.caption }}" style="margin-bottom: 5px;">
-                                        {{item.caption|truncatewords:15}}
+                                        {{ item.caption|truncatewords:15 }}
                                     </p>
-                                    <p style="font-size: 1.4rem; color: var(--color-sub);">
-                                        {{item.created|date:"d.m.Y"}}</p>
+                                    <p style="font-size: 1.4rem; color: var(--color-sub);">{{item.created|date:"d.m.Y"}}</p>
                                     {% endif %}
                                     <div class="like-section">
                                         <button class="like-button" data-item-id="{{ item.id }}"
                                                 data-item-type="{% if item.image %}photo{% else %}video{% endif %}">
                                             <span class="like-icon">&#9829;</span>
-                                            <span class="like-count">{{item.likes.count}}</span>
+                                            <span class="like-count">{{ item.likes.count }}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -200,6 +192,8 @@
                         </div>
                         {% endfor %}
                     </div>
+
+
                 </div>
                 <div class="column column--1of5">
                     <h2 style="font-size: 2.6rem; color: var(--color-sub); text-align: center;">Комментарии</h2>
@@ -218,7 +212,8 @@
                                         <h3 class="link__title" style=" font-size: 1.4rem;color: var(--color-sub);">
                                             {{comment.author.username}} </h3>
                                         <p style="font-size: 1.6rem; color: var(--color-main);">{{comment.content}}</p>
-                                        <p style="font-size: 1.2rem; color: var(--color-sub);">{{comment.created_at|date:"d.m.Y"}}</p>
+                                        <p style="font-size: 1.2rem; color: var(--color-sub);">
+                                            {{comment.created_at|date:"d.m.Y"}}</p>
                                     </a>
                                 </div>
                             </div>

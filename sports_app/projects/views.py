@@ -9,6 +9,11 @@ from .utils import search_projects, search_news_feed, paginate_projects, paginat
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+
+
 
 
 def fetch_favicon(url):
@@ -80,6 +85,40 @@ def project(request, pk):
     return render(request, 'projects/single-project.html', context)
 
 
+# def create_project(request):
+#     profile = request.user.profile
+#     project_form = ProjectForm()
+#     tag_form = TagForm()
+#
+#     if request.method == "POST":
+#         project_form = ProjectForm(request.POST, request.FILES)
+#         tag_form = TagForm(request.POST)
+#         if project_form.is_valid():
+#             project = project_form.save(commit=False)
+#             project.owner = profile
+#             project.save()
+#             return redirect('account')
+#
+#         if 'add_tag' in request.POST:
+#             if tag_form.is_valid():
+#                 tag_form.save()
+#                 return redirect('create-project')
+#
+#         if 'submit_project' in request.POST:
+#             if project_form.is_valid():
+#                 project = project_form.save()
+#                 return redirect('account')
+#
+#     context = {
+#         'background_image': 'images/free1.jpg',
+#         'hide_search': True,  # Добавляем переменную для скрытия поисковой строки
+#         'project_form': project_form,
+#         'tag_form': tag_form,
+#     }
+#     return render(request, 'projects/form-template.html', context)
+
+
+
 def create_project(request):
     profile = request.user.profile
     project_form = ProjectForm()
@@ -87,13 +126,8 @@ def create_project(request):
 
     if request.method == "POST":
         project_form = ProjectForm(request.POST, request.FILES)
-        if project_form.is_valid():
-            project = project_form.save(commit=False)
-            project.owner = profile
-            project.save()
-            return redirect('account')
-
         tag_form = TagForm(request.POST)
+
         if 'add_tag' in request.POST:
             if tag_form.is_valid():
                 tag_form.save()
@@ -101,7 +135,14 @@ def create_project(request):
 
         if 'submit_project' in request.POST:
             if project_form.is_valid():
-                project = project_form.save()
+                project = project_form.save(commit=False)
+                project.owner = profile
+                project.save()
+
+                # Добавляем выбранные теги и секции
+                project.tags.set(project_form.cleaned_data['tags'])
+                project.sections.set(project_form.cleaned_data['sections'])
+
                 return redirect('account')
 
     context = {

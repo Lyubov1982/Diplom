@@ -56,9 +56,31 @@ class Photo(models.Model):
         verbose_name_plural = 'фотографии'
 
 
+# class Video(models.Model):
+#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='videos')
+#     video = models.FileField(upload_to='videos/', verbose_name='Видео')
+#     caption = models.TextField(blank=True, null=True, verbose_name='Подпись')
+#     likes = models.ManyToManyField(User, related_name='video_likes', blank=True)
+#     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+#
+#     def __str__(self):
+#         return f"{self.profile.nickname} - {self.created}"
+#
+#     class Meta:
+#         verbose_name = 'Видео'
+#         verbose_name_plural = 'видео'
+
+
 class Video(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='videos')
-    video = models.FileField(upload_to='videos/', verbose_name='Видео')
+    VIDEO_TYPE_CHOICES = (
+        ('local', 'Локальное видео'),
+        ('url', 'Ссылка на видео'),
+    )
+
+    profile = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='videos')
+    video_type = models.CharField(max_length=10, choices=VIDEO_TYPE_CHOICES, default='local', verbose_name='Тип видео')
+    video = models.FileField(upload_to='videos/', verbose_name='Видео', blank=True, null=True)
+    video_url = models.URLField(blank=True, null=True, verbose_name='Ссылка на видео')
     caption = models.TextField(blank=True, null=True, verbose_name='Подпись')
     likes = models.ManyToManyField(User, related_name='video_likes', blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
@@ -69,6 +91,7 @@ class Video(models.Model):
     class Meta:
         verbose_name = 'Видео'
         verbose_name_plural = 'видео'
+
 
 
 class Message(models.Model):
