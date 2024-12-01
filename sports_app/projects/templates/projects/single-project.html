@@ -48,10 +48,10 @@
                         {% csrf_token %}
                         <!-- Textarea -->
                         <div class="form__field">
-                            <label for="formInput#textarea">Comments: </label>
-                            {{ form.content }}
+                            <label for="formInput#textarea">Комментарии: </label>
+                            {{form.content}}
                         </div>
-                        <input class="btn btn--sub btn--lg" type="submit" value="Comments"/>
+                        <input class="btn btn--sub btn--lg" type="submit" value="Комментарий"/>
                     </form>
                     <div class="commentList">
                         {% for comment in project.comments.all %}
